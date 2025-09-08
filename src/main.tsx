@@ -1,41 +1,40 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router';
-import App from './App';
-import Layout from './layouts/dashboard';
-import DashboardPage from './pages';
-import EmployeesCrudPage from './pages/employees';
-import TestPage from './pages/test';
-
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import App from "./App";
+import Layout from "./layouts/dashboard";
+import DashboardPage from "./pages";
+import EmployeesCrudPage from "./pages/employees";
+import TestPage from "./pages/list";
 
 const router = createBrowserRouter([
   {
     Component: App,
     children: [
       {
-        path: '/',
+        path: "/",
         Component: Layout,
         children: [
           {
-            path: '',
+            path: "",
             Component: DashboardPage,
           },
           {
-            path: 'employees/:employeeId?/*',
+            path: "employees/:employeeId?/*",
             Component: EmployeesCrudPage,
           },
           {
-            path: 'test',
-            Component: TestPage
-          }
+            path: "list/:listId?/*",
+            Component: TestPage,
+          },
         ],
       },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
 );

@@ -1,11 +1,12 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
 import { PageContainer } from "@toolpad/core/PageContainer";
+import NotesCrud from "../data/aicrud";
 
-export default function HomePage() {
+export default function ListPage() {
   return (
     <PageContainer>
-      <Typography>Welcome to Toolpad Core!</Typography>
+      <NotesCrud />
     </PageContainer>
   );
 }

@@ -1,12 +1,15 @@
+// settings.tsx
 import * as React from "react";
+import { Business, CalendarMonth, Place } from "@mui/icons-material";
+import { Stack, Card, CardContent, Avatar, Typography } from "@mui/material";
 import { PageContainer } from "@toolpad/core/PageContainer";
-import Typography from "@mui/material/Typography";
-import TuneIcon from "@mui/icons-material/Tune";
+import SettingsPage from "../data/settingsconnect";
 
-export default function ToyPage() {
+export default function Settings() {
   return (
-    <PageContainer title="Settings" breadcrumbs={[]}>
-      <Typography></Typography>
-    </PageContainer>
+
+<PageContainer>
+      <SettingsPage />
+</PageContainer>
   );
 }

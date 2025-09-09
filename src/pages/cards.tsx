@@ -5,9 +5,7 @@ import CardsPages from "../componets/cardl";
 export default function CardsPage() {
   return (
     <PageContainer>
-    
-       <CardsPages />
-   
+      <CardsPages />
     </PageContainer>
   );
 }

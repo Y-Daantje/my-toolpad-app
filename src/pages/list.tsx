@@ -1,11 +1,11 @@
 import * as React from "react";
 import { PageContainer } from "@toolpad/core/PageContainer";
-import NotesCrud from "../data/aicrud";
+import AiCrud from "../data/aicrud";
 
 export default function ListPage() {
   return (
     <PageContainer>
-      <NotesCrud />
+      <AiCrud />
     </PageContainer>
   );
 }

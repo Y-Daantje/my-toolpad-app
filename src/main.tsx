@@ -28,7 +28,7 @@ const router = createBrowserRouter([
             path: "list/:listId?/*",
             Component: ListPage,
           },
-             {
+          {
             path: "cards",
             Component: CardsPage,
           },

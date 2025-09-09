@@ -22,7 +22,7 @@ const NAVIGATION: Navigation = [
   },
   {
     segment: "list",
-    title: "Notes",
+    title: "list",
     icon: <RocketLaunch />,
     pattern: "list{/:listId}*",
   },

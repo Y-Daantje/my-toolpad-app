@@ -4,7 +4,7 @@ import AiCrud from "../data/aicrud";
 
 export default function ListPage() {
   return (
-    <PageContainer>
+    <PageContainer title="" breadcrumbs={[]}>
       <AiCrud />
     </PageContainer>
   );

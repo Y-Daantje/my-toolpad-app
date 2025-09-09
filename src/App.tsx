@@ -1,10 +1,9 @@
-import * as React from "react";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonIcon from "@mui/icons-material/Person";
 import { Outlet } from "react-router";
 import { ReactRouterAppProvider } from "@toolpad/core/react-router";
 import type { Navigation } from "@toolpad/core/AppProvider";
-import { RocketLaunch } from "@mui/icons-material";
+import { RocketLaunch, Style } from "@mui/icons-material";
 
 const NAVIGATION: Navigation = [
   {
@@ -26,6 +25,12 @@ const NAVIGATION: Navigation = [
     title: "Notes",
     icon: <RocketLaunch />,
     pattern: "list{/:listId}*",
+  },
+  {
+    segment: "cards",
+    title: "Cards",
+    icon: <Style />,
+    pattern: "cards",
   },
 ];
 

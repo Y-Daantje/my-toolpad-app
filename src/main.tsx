@@ -5,7 +5,8 @@ import App from "./App";
 import Layout from "./layouts/dashboard";
 import DashboardPage from "./pages";
 import EmployeesCrudPage from "./pages/employees";
-import TestPage from "./pages/list";
+import ListPage from "./pages/list";
+import CardsPage from "./pages/cards";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,11 @@ const router = createBrowserRouter([
           },
           {
             path: "list/:listId?/*",
-            Component: TestPage,
+            Component: ListPage,
+          },
+             {
+            path: "cards",
+            Component: CardsPage,
           },
         ],
       },

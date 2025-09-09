@@ -7,6 +7,7 @@ import DashboardPage from "./pages";
 import EmployeesCrudPage from "./pages/employees";
 import ListPage from "./pages/list";
 import CardsPage from "./pages/cards";
+import SettingsPage from "./pages/settings";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
           {
             path: "cards",
             Component: CardsPage,
+          },
+          {
+            path: "settings",
+            Component: SettingsPage,
           },
         ],
       },

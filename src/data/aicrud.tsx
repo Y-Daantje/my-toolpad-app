@@ -40,12 +40,11 @@ const dataSource: DataSource<Row> = {
     return updatedItem;
   },
 
-    createOne: async (data) => {
-  
-    const res = await fetch('list.tsx', {
-      method: 'POST',
+  createOne: async (data) => {
+    const res = await fetch("list.tsx", {
+      method: "POST",
       body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' },
+      headers: { "Content-Type": "application/json" },
     });
     const resJson = await res.json();
 
@@ -72,4 +71,3 @@ export default function AiCrud() {
     />
   );
 }
-

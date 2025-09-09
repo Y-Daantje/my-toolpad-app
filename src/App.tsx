@@ -4,6 +4,7 @@ import { Outlet } from "react-router";
 import { ReactRouterAppProvider } from "@toolpad/core/react-router";
 import type { Navigation } from "@toolpad/core/AppProvider";
 import { RocketLaunch, Style } from "@mui/icons-material";
+import TuneIcon from "@mui/icons-material/Tune";
 
 const NAVIGATION: Navigation = [
   {
@@ -31,6 +32,12 @@ const NAVIGATION: Navigation = [
     title: "Cards",
     icon: <Style />,
     pattern: "cards",
+  },
+  {
+    segment: "settings",
+    title: "Settings",
+    icon: <TuneIcon />,
+    pattern: "settings",
   },
 ];
 

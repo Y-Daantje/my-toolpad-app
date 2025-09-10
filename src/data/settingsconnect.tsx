@@ -134,7 +134,7 @@ export default function SettingsPage() {
                     onFocus={(e) => e.stopPropagation()}
                     onKeyDown={(e) => e.stopPropagation()}
                   >
-                    {connected.facebook ?"Loskoppelen" : "Verbinden"}
+                    {connected.facebook ? "Loskoppelen" : "Verbinden"}
                   </Button>
                 }
                 sx={{ pr: 7 }}
@@ -347,6 +347,44 @@ export default function SettingsPage() {
           </Accordion>
           <Divider />
           <Accordion disableGutters elevation={0} square defaultExpanded>
+            <AccordionSummary>
+              <ListItem
+                disableGutters
+                secondaryAction={
+                  <Button
+                    size="small"
+                    variant={connected.instagram ? "outlined" : "contained"}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      togglePlatform("instagram")();
+                    }}
+                    onFocus={(e) => e.stopPropagation()}
+                    onKeyDown={(e) => e.stopPropagation()}
+                  >
+                    {connected.instagram ? "Loskoppelen" : "Verbinden"}
+                  </Button>
+                }
+                sx={{ pr: 7 }}
+              >
+                <ListItemAvatar>
+                  <Avatar
+                    sx={{
+                      bgcolor: "#0A66C2", // LinkedIn blue
+                    }}
+                  >
+                    <LinkedIn sx={{ color: "white" }} />
+                  </Avatar>
+                </ListItemAvatar>
+
+                <ListItemText
+                  primary="LinkedIn"
+                  primaryTypographyProps={{ fontWeight: 600 }}
+                />
+              </ListItem>
+            </AccordionSummary>
+          </Accordion>
+          <Divider />
+                <Accordion disableGutters elevation={0} square defaultExpanded>
             <AccordionSummary>
               <ListItem
                 disableGutters

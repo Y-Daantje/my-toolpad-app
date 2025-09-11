@@ -1,11 +1,11 @@
 import * as React from "react";
 import { PageContainer } from "@toolpad/core/PageContainer";
-import SettingsPage from "../data/settings";
+import PreferencesCard from "../componets/preferences";
 
-export default function Settings() {
+export default function preferences() {
   return (
     <PageContainer>
-      <SettingsPage />
+      <PreferencesCard />
     </PageContainer>
   );
 }

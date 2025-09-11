@@ -8,8 +8,8 @@ import EmployeesCrudPage from "./pages/employees";
 import ListPage from "./pages/list";
 import CardsPage from "./pages/cards";
 import Connections from "./pages/connections";
-import Settings from "./pages/settings";
 import profile from "./pages/profile";
+import preferences from "./pages/preferences";
 
 const router = createBrowserRouter([
   {
@@ -35,13 +35,13 @@ const router = createBrowserRouter([
             path: "cards",
             Component: CardsPage,
           },
-            {
+          {
             path: "profile",
             Component: profile,
           },
           {
-            path: "settings",
-            Component: Settings,
+            path: "preferences",
+            Component: preferences,
           },
           {
             path: "connections",

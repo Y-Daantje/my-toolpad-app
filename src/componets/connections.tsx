@@ -29,7 +29,7 @@ import {
   X,
   GitHub,
 } from "@mui/icons-material";
-import ProfileCardV1 from "../componets/ProfileCardV1";
+
 
 export default function ConnectionsPage() {
   // platform connects
@@ -78,10 +78,7 @@ export default function ConnectionsPage() {
       setMsSubs((prev) => ({ ...prev, [sid]: checked }));
 
   return (
-    <Stack spacing={3}>
-      {/* Profile header */}
-      <ProfileCardV1 />
-
+    <Stack spacing={2}>
       {/* Connected Accounts */}
       <Card sx={{ border: 0, boxShadow: 0 }}>
         <CardContent>

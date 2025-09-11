@@ -40,10 +40,10 @@ const NAVIGATION: Navigation = [
     pattern: "profile",
   },
   {
-    segment: "settings",
-    title: "Settings",
+    segment: "preferences",
+    title: "preferences",
     icon: <TuneIcon />,
-    pattern: "settings",
+    pattern: "preferences",
   },
   {
     segment: "connections",

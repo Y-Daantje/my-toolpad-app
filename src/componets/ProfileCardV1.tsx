@@ -21,7 +21,6 @@ import {
   CalendarMonth,
   ContentCopy as CopyIcon,
   ExpandMore as ExpandMoreIcon,
-  ContentCopy,
 } from "@mui/icons-material";
 import { styled, SxProps } from "@mui/material/styles";
 

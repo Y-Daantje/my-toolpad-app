@@ -3,7 +3,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { Outlet } from "react-router";
 import { ReactRouterAppProvider } from "@toolpad/core/react-router";
 import type { Navigation } from "@toolpad/core/AppProvider";
-import { RocketLaunch, Style } from "@mui/icons-material";
+import { Group, RocketLaunch, Style, WifiTethering } from "@mui/icons-material";
 import TuneIcon from "@mui/icons-material/Tune";
 
 const NAVIGATION: Navigation = [
@@ -34,10 +34,22 @@ const NAVIGATION: Navigation = [
     pattern: "cards",
   },
   {
+    segment: "profile",
+    title: "Profile",
+    icon: <Group />,
+    pattern: "profile",
+  },
+  {
     segment: "settings",
     title: "Settings",
     icon: <TuneIcon />,
     pattern: "settings",
+  },
+  {
+    segment: "connections",
+    title: "Connections",
+    icon: <WifiTethering />,
+    pattern: "connections",
   },
 ];
 

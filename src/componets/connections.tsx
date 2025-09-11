@@ -20,9 +20,6 @@ import {
 
 import {
   Facebook,
-  Business,
-  CalendarMonth,
-  Place,
   CloudOutlined,
   GroupsOutlined,
   Microsoft,
@@ -30,15 +27,19 @@ import {
   Mail,
   LinkedIn,
   X,
+  GitHub,
 } from "@mui/icons-material";
+import ProfileCardV1 from "../componets/ProfileCardV1";
 
-export default function SettingsPage() {
+export default function ConnectionsPage() {
   // platform connects
   const [connected, setConnected] = React.useState({
     facebook: false,
     microsoft: false,
     twitter: false,
     instagram: false,
+    Linkedin: false,
+    github: false,
   });
 
   const IG_GRADIENT = `linear-gradient(
@@ -79,37 +80,7 @@ export default function SettingsPage() {
   return (
     <Stack spacing={3}>
       {/* Profile header */}
-      <Card>
-        <CardContent>
-          <Stack sx={{ alignItems: "center", gap: 2 }}>
-            <Avatar sx={{ width: 100, height: 100 }} />
-            <Typography variant="h6">Yannick Daantje</Typography>
-            <Stack
-              direction={{ xs: "column", sm: "row" }}
-              sx={{
-                gap: { xs: 1.5, sm: 5 },
-                alignItems: "center",
-                color: "text.secondary",
-              }}
-            >
-              <Stack direction="row" sx={{ gap: 1, alignItems: "center" }}>
-                <Business />
-                <Typography variant="subtitle2">Software Developer</Typography>
-              </Stack>
-              <Stack direction="row" sx={{ gap: 1, alignItems: "center" }}>
-                <Place />
-                <Typography variant="subtitle2">Dordrecht</Typography>
-              </Stack>
-              <Stack direction="row" sx={{ gap: 1, alignItems: "center" }}>
-                <CalendarMonth />
-                <Typography variant="subtitle2">
-                  Sinds 1 september 2025
-                </Typography>
-              </Stack>
-            </Stack>
-          </Stack>
-        </CardContent>
-      </Card>
+      <ProfileCardV1 />
 
       {/* Connected Accounts */}
       <Card sx={{ border: 0, boxShadow: 0 }}>
@@ -353,15 +324,15 @@ export default function SettingsPage() {
                 secondaryAction={
                   <Button
                     size="small"
-                    variant={connected.instagram ? "outlined" : "contained"}
+                    variant={connected.Linkedin ? "outlined" : "contained"}
                     onClick={(e) => {
                       e.stopPropagation();
-                      togglePlatform("instagram")();
+                      togglePlatform("Linkedin")();
                     }}
                     onFocus={(e) => e.stopPropagation()}
                     onKeyDown={(e) => e.stopPropagation()}
                   >
-                    {connected.instagram ? "Loskoppelen" : "Verbinden"}
+                    {connected.Linkedin ? "Loskoppelen" : "Verbinden"}
                   </Button>
                 }
                 sx={{ pr: 7 }}
@@ -377,29 +348,29 @@ export default function SettingsPage() {
                 </ListItemAvatar>
 
                 <ListItemText
-                  primary="LinkedIn"
+                  primary="Linkedin"
                   primaryTypographyProps={{ fontWeight: 600 }}
                 />
               </ListItem>
             </AccordionSummary>
           </Accordion>
           <Divider />
-                <Accordion disableGutters elevation={0} square defaultExpanded>
+          <Accordion disableGutters elevation={0} square defaultExpanded>
             <AccordionSummary>
               <ListItem
                 disableGutters
                 secondaryAction={
                   <Button
                     size="small"
-                    variant={connected.instagram ? "outlined" : "contained"}
+                    variant={connected.github ? "outlined" : "contained"}
                     onClick={(e) => {
                       e.stopPropagation();
-                      togglePlatform("instagram")();
+                      togglePlatform("github")();
                     }}
                     onFocus={(e) => e.stopPropagation()}
                     onKeyDown={(e) => e.stopPropagation()}
                   >
-                    {connected.instagram ? "Loskoppelen" : "Verbinden"}
+                    {connected.github ? "Loskoppelen" : "Verbinden"}
                   </Button>
                 }
                 sx={{ pr: 7 }}
@@ -407,15 +378,15 @@ export default function SettingsPage() {
                 <ListItemAvatar>
                   <Avatar
                     sx={{
-                      bgcolor: "#0A66C2", // LinkedIn blue
+                      bgcolor: "black",
                     }}
                   >
-                    <LinkedIn sx={{ color: "white" }} />
+                    <GitHub sx={{ color: "white" }} />
                   </Avatar>
                 </ListItemAvatar>
 
                 <ListItemText
-                  primary="LinkedIn"
+                  primary="GitHub"
                   primaryTypographyProps={{ fontWeight: 600 }}
                 />
               </ListItem>

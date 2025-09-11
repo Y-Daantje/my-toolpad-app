@@ -1,11 +1,11 @@
 import * as React from "react";
 import { PageContainer } from "@toolpad/core/PageContainer";
-import SettingsPage from "../data/settings";
+import ProfileCardV1Sectioned from "../componets/ProfileCardV1";
 
-export default function Settings() {
+export default function profile() {
   return (
     <PageContainer>
-      <SettingsPage />
+      <ProfileCardV1Sectioned />
     </PageContainer>
   );
 }

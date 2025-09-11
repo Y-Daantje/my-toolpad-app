@@ -1,11 +1,11 @@
 import * as React from "react";
 import { PageContainer } from "@toolpad/core/PageContainer";
-import SettingsPage from "../data/settings";
+import ConnectionsPage from "../componets/connections";
 
-export default function Settings() {
+export default function connections() {
   return (
     <PageContainer>
-      <SettingsPage />
+      <ConnectionsPage />
     </PageContainer>
   );
 }

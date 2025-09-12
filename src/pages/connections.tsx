@@ -4,7 +4,7 @@ import ConnectionsPage from "../componets/connections";
 
 export default function connections() {
   return (
-    <PageContainer>
+    <PageContainer title="">
       <ConnectionsPage />
     </PageContainer>
   );

@@ -4,7 +4,7 @@ import PreferencesCard from "../componets/preferences";
 
 export default function preferences() {
   return (
-    <PageContainer>
+    <PageContainer title="">
       <PreferencesCard />
     </PageContainer>
   );

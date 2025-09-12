@@ -13,8 +13,12 @@ import {
   Stack,
   Tooltip,
   Typography,
+  SxProps,
+  Theme,
+  styled,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import Collapse from "@mui/material/Collapse";
 import {
   Business,
   Place,
@@ -22,7 +26,6 @@ import {
   ContentCopy as CopyIcon,
   ExpandMore as ExpandMoreIcon,
 } from "@mui/icons-material";
-import { styled, SxProps } from "@mui/material/styles";
 
 // —— types (extends your C# model with optional address fields) ——
 export type Profile = {
@@ -101,13 +104,15 @@ const RingAvatar = styled(Avatar)(({ theme }) => ({
   boxShadow: theme.shadows[3],
 }));
 
-// label-value row (no border)
+// ————— FieldRow (labels heavier by default; supports labelSx/valueSx) —————
 type FieldRowProps = {
   label: string;
-  value?: string;
+  value?: React.ReactNode;
   link?: string;
   copy?: boolean;
-  sx?: SxProps;
+  sx?: SxProps<Theme>;
+  labelSx?: SxProps<Theme>;
+  valueSx?: SxProps<Theme>;
 };
 
 export function FieldRow({
@@ -116,33 +121,49 @@ export function FieldRow({
   link,
   copy = true,
   sx,
+  labelSx,
+  valueSx,
 }: FieldRowProps) {
   const [copied, setCopied] = React.useState(false);
+
   const onCopy = async () => {
-    if (!value) return;
-    await navigator.clipboard.writeText(value);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 900);
+    if (value == null) return;
+    const text =
+      typeof value === "string"
+        ? value
+        : typeof value === "number"
+          ? String(value)
+          : React.isValidElement(value) &&
+              typeof value.props?.children === "string"
+            ? value.props.children
+            : String(value);
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 900);
+    } catch {
+      // no-op
+    }
   };
 
   return (
     <Grid
       container
       alignItems="center"
-      // tighter vertical rhythm + responsive horizontal spacing
       columnSpacing={{ xs: 0.75, sm: 1.5, md: 2, lg: 2.5 }}
       rowSpacing={{ xs: 0.25, sm: 0 }}
       sx={{ py: 0.3, ...sx }}
     >
-      {/* Label stacks on xs; becomes a narrow column on large screens */}
+      {/* Label stacks on xs; becomes a narrow column on larger screens */}
       <Grid size={{ xs: 12, sm: 4, md: 3, lg: 2 }}>
         <Typography
           variant="body2"
           sx={{
-            color: "text.secondary",
+            fontWeight: 600, // heavier label by default
             whiteSpace: { xs: "normal", sm: "nowrap" },
             lineHeight: 1.6,
             pr: { sm: 1 },
+            ...labelSx,
           }}
         >
           {label}:
@@ -160,14 +181,24 @@ export function FieldRow({
               target="_blank"
               rel="noopener noreferrer"
               underline="hover"
-              sx={{ flex: 1, wordBreak: "break-word", lineHeight: 1.6 }}
+              sx={{
+                flex: 1,
+                wordBreak: "break-word",
+                lineHeight: 1.6,
+                ...valueSx,
+              }}
             >
               {value}
             </Typography>
           ) : (
             <Typography
               variant="body2"
-              sx={{ flex: 1, wordBreak: "break-word", lineHeight: 1.6 }}
+              sx={{
+                flex: 1,
+                wordBreak: "break-word",
+                lineHeight: 1.6,
+                ...valueSx,
+              }}
             >
               {value ?? "—"}
             </Typography>
@@ -198,7 +229,6 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 export default function ProfileCardV1Sectioned({
-  coverUrl = "https://images.unsplash.com/photo-1558551649-e44c8f992010?q=80&w=868&auto=format&fit=crop",
   profile = MOCK,
 }: {
   coverUrl?: string;
@@ -214,7 +244,8 @@ export default function ProfileCardV1Sectioned({
         <Box
           sx={{
             height: 180,
-            backgroundImage: `url(${coverUrl})`,
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1558551649-e44c8f992010?q=80&w=868&auto=format&fit=crop)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -275,11 +306,8 @@ export default function ProfileCardV1Sectioned({
         <SectionTitle>Algemeen</SectionTitle>
         <Grid container spacing={2} sx={{ mt: 1 }}>
           <Grid size={{ xs: 12, sm: 6 }}>
-            <FieldRow label="Displayname" value={profile.DisplayName} />
-          </Grid>
-          <Grid size={{ xs: 12, sm: 6 }}>
             <FieldRow
-              label="Emailadres"
+              label="E-mail"
               value={profile.PrimaryEmail}
               link={
                 profile.PrimaryEmail
@@ -289,10 +317,10 @@ export default function ProfileCardV1Sectioned({
             />
           </Grid>
           <Grid size={{ xs: 12, sm: 6 }}>
-            <FieldRow label="Functie" value={profile.JobTitle} />
+            <FieldRow label="Function" value={profile.JobTitle} />
           </Grid>
           <Grid size={{ xs: 12, sm: 6 }}>
-            <FieldRow label="Afdeling" value={profile.Department} />
+            <FieldRow label="Department" value={profile.Department} />
           </Grid>
           <Grid size={{ xs: 12, sm: 6 }}>
             <FieldRow label="Manager" value={profile.ManagerName} />
@@ -309,12 +337,12 @@ export default function ProfileCardV1Sectioned({
             />
           </Grid>
           <Grid size={{ xs: 12, sm: 6 }}>
-            <FieldRow label="Taal" value={profile.Language} />
+            <FieldRow label="Language" value={profile.Language} />
           </Grid>
           <Grid size={{ xs: 12, sm: 6 }}>
             <FieldRow label="EmployeeID" value={profile.EmployeeId} />
           </Grid>
-          <Grid size={{ xs: 12 }}>
+          <Grid size={{ xs: 12, sm: 6 }}>
             <FieldRow
               label="UserPrincipalName"
               value={profile.UserPrincipalName}
@@ -322,74 +350,78 @@ export default function ProfileCardV1Sectioned({
           </Grid>
         </Grid>
 
-        {/* expanded sections */}
-        {expanded && (
-          <>
-            {/* ZAKELIJK */}
-            <SectionTitle>Zakelijk</SectionTitle>
-            <Grid container spacing={2} sx={{ mt: 1 }}>
-              <Grid size={{ xs: 12, sm: 6 }}>
-                <FieldRow label="Bedrijfsnaam" value={profile.Company} />
-              </Grid>
-              <Grid size={{ xs: 12, sm: 6 }}>
-                <FieldRow
-                  label="Telefoon"
-                  value={profile.BusinessPhones ?? profile.BusinessPhone}
-                />
-              </Grid>
-              <Grid size={{ xs: 12, sm: 6 }}>
-                <FieldRow
-                  label="Straatnaam/huisnr"
-                  value={profile.BusinessStreet}
-                />
-              </Grid>
-              <Grid size={{ xs: 12, sm: 3 }}>
-                <FieldRow label="Postcode" value={profile.BusinessPostcode} />
-              </Grid>
-              <Grid size={{ xs: 12, sm: 3 }}>
-                <FieldRow label="Plaats" value={profile.BusinessPlaats} />
-              </Grid>
-              <Grid size={{ xs: 12, sm: 6 }}>
-                <FieldRow
-                  label="Country"
-                  value={profile.BusinessCountry ?? profile.Country}
-                />
-              </Grid>
+        {/* Expanded sections with animation */}
+        <Collapse
+          in={expanded}
+          timeout={{ enter: 600, exit: 450 }}
+          unmountOnExit
+          mountOnEnter
+        >
+          {/* ZAKELIJK */}
+          
+          <SectionTitle>Zakelijk</SectionTitle>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <FieldRow label="Company-name" value={profile.Company} />
             </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <FieldRow
+                label="Telephone"
+                value={profile.BusinessPhones ?? profile.BusinessPhone}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <FieldRow
+                label="Street name/house number"
+                value={profile.BusinessStreet}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <FieldRow label="Postal code" value={profile.BusinessPostcode} />
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <FieldRow label="Place" value={profile.BusinessPlaats} />
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <FieldRow
+                label="Country"
+                value={profile.BusinessCountry ?? profile.Country}
+              />
+            </Grid>
+          </Grid>
 
-            {/* PRIVÉ */}
-            <SectionTitle>Privé</SectionTitle>
-            <Grid container spacing={2} sx={{ mt: 1 }}>
-              <Grid size={{ xs: 12, sm: 6 }}>
-                <FieldRow
-                  label="Telefoon"
-                  value={profile.PrivatePhone ?? profile.MobilePhone}
-                />
-              </Grid>
-              <Grid size={{ xs: 12, sm: 6 }}>
-                <FieldRow
-                  label="Straatnaam + huisnr"
-                  value={profile.PrivateStreet}
-                />
-              </Grid>
-              <Grid size={{ xs: 12, sm: 3 }}>
-                <FieldRow label="Postcode" value={profile.PrivatePostcode} />
-              </Grid>
-              <Grid size={{ xs: 12, sm: 3 }}>
-                <FieldRow
-                  label="Woonplaats"
-                  value={profile.PrivatePlaats ?? profile.City}
-                />
-              </Grid>
-              <Grid size={{ xs: 12, sm: 6 }}>
-                <FieldRow
-                  label="Country"
-                  value={profile.PrivateCountry ?? profile.Country}
-                />
-              </Grid>
+          {/* PRIVÉ */}
+          <SectionTitle>Privé</SectionTitle>
+          <Grid container spacing={2} sx={{ mt: 1 }}>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <FieldRow
+                label="Telephone"
+                value={profile.PrivatePhone ?? profile.MobilePhone}
+              />
             </Grid>
-          </>
-        )}
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <FieldRow
+                label="Street name/house number"
+                value={profile.PrivateStreet}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <FieldRow label="Postal code" value={profile.PrivatePostcode} />
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <FieldRow
+                label="Place of residence"
+                value={profile.PrivatePlaats ?? profile.City}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, sm: 6 }}>
+              <FieldRow
+                label="Country"
+                value={profile.PrivateCountry ?? profile.Country}
+              />
+            </Grid>
+          </Grid>
+        </Collapse>
 
         {/* bottom separator + expand button */}
         <Divider sx={{ mt: 2, mb: 1.5 }} />
@@ -399,14 +431,17 @@ export default function ProfileCardV1Sectioned({
             onClick={() => setExpanded((x) => !x)}
             endIcon={
               <ExpandMoreIcon
-                sx={{
-                  transition: "transform .2s",
+                sx={(theme) => ({
+                  transition: theme.transitions.create("transform", {
+                    duration: 160,
+                    easing: theme.transitions.easing.easeInOut,
+                  }),
                   transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
-                }}
+                })}
               />
             }
           >
-            {expanded ? "Minder tonen" : "Meer tonen"}
+            {expanded ? "Show less" : "Show More"}
           </Button>
         </Box>
       </Paper>

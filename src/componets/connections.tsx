@@ -30,7 +30,6 @@ import {
   GitHub,
 } from "@mui/icons-material";
 
-
 export default function ConnectionsPage() {
   // platform connects
   const [connected, setConnected] = React.useState({
@@ -82,8 +81,8 @@ export default function ConnectionsPage() {
       {/* Connected Accounts */}
       <Card sx={{ border: 0, boxShadow: 0 }}>
         <CardContent>
-          <Typography variant="h6" sx={{ mb: 1 }}>
-            Verbonden accounts
+          <Typography variant="h4" sx={{ mb: 2 }}>
+            Connected accounts
           </Typography>
 
           {/* Facebook (no subs) */}
@@ -114,7 +113,7 @@ export default function ConnectionsPage() {
                 </ListItemAvatar>
                 <ListItemText
                   primary="Facebook"
-                  primaryTypographyProps={{ fontWeight: 600 }}
+                  primaryTypographyProps={{ fontWeight: 400 }}
                 />
               </ListItem>
             </AccordionSummary>
@@ -154,7 +153,7 @@ export default function ConnectionsPage() {
                 </ListItemAvatar>
                 <ListItemText
                   primary="Microsoft"
-                  primaryTypographyProps={{ fontWeight: 600 }}
+                  primaryTypographyProps={{ fontWeight: 400 }}
                 />
               </ListItem>
             </AccordionSummary>
@@ -268,7 +267,7 @@ export default function ConnectionsPage() {
                 </ListItemAvatar>
                 <ListItemText
                   primary="X"
-                  primaryTypographyProps={{ fontWeight: 600 }}
+                  primaryTypographyProps={{ fontWeight: 400 }}
                 />
               </ListItem>
             </AccordionSummary>
@@ -308,7 +307,7 @@ export default function ConnectionsPage() {
 
                 <ListItemText
                   primary="Instagram"
-                  primaryTypographyProps={{ fontWeight: 600 }}
+                  primaryTypographyProps={{ fontWeight: 400 }}
                 />
               </ListItem>
             </AccordionSummary>
@@ -346,7 +345,7 @@ export default function ConnectionsPage() {
 
                 <ListItemText
                   primary="Linkedin"
-                  primaryTypographyProps={{ fontWeight: 600 }}
+                  primaryTypographyProps={{ fontWeight: 400 }}
                 />
               </ListItem>
             </AccordionSummary>
@@ -384,7 +383,7 @@ export default function ConnectionsPage() {
 
                 <ListItemText
                   primary="GitHub"
-                  primaryTypographyProps={{ fontWeight: 600 }}
+                  primaryTypographyProps={{ fontWeight: 400 }}
                 />
               </ListItem>
             </AccordionSummary>

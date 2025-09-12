@@ -57,8 +57,8 @@ export default function PreferencesCard({
         bgcolor: "background.paper",
       }}
     >
-      <Typography variant="h6" sx={{ fontWeight: 500 }}>
-        Algemene Voorkeuren
+      <Typography variant="h4" >
+        General Preferences
       </Typography>
       <Divider sx={{ mt: 1.5, mb: 2 }} />
 
@@ -67,7 +67,7 @@ export default function PreferencesCard({
         <Grid size={{ xs: 12, md: 6 }}>
           <Stack spacing={0.5}>
             <FormControl
-              size="small"
+        
               fullWidth
               sx={{
                 mt: 0.5,
@@ -76,10 +76,10 @@ export default function PreferencesCard({
                 },
               }}
             >
-              <InputLabel id="pref-lang-label">Taal</InputLabel>
+              <InputLabel id="pref-lang-label">Language</InputLabel>
               <Select
                 labelId="pref-lang-label"
-                label="Taal"
+                label="Language"
                 value={lang}
                 onChange={(e) => handleLang(String(e.target.value))}
               >
@@ -96,22 +96,22 @@ export default function PreferencesCard({
         <Grid size={{ xs: 12, md: 6 }}>
           <Stack spacing={0.5}>
             <FormControl
-              size="small"
+          
               fullWidth
               sx={{
                 mt: 0.5,
                 "& .MuiOutlinedInput-root": { borderRadius: 2 },
               }}
             >
-              <InputLabel id="pref-mode-label">Thema</InputLabel>
+              <InputLabel id="pref-mode-label">Theme</InputLabel>
               <Select
                 labelId="pref-mode-label"
-                label="Thema"
+                label="Theme"
                 value={mode}
                 onChange={(e) => handleMode(String(e.target.value))}
               >
-                <MenuItem value="light">Licht</MenuItem>
-                <MenuItem value="dark">Donker</MenuItem>
+                <MenuItem value="light">Light</MenuItem>
+                <MenuItem value="dark">Dark</MenuItem>
               </Select>
             </FormControl>
           </Stack>
@@ -120,16 +120,16 @@ export default function PreferencesCard({
         {/* Bericht verzenden */}
         <Grid size={{ xs: 12, md: 6 }}>
           <Stack spacing={0.5}>
-            <Typography variant="subtitle2">Bericht verzenden</Typography>
-            <Typography variant="caption" sx={{ fontWeight: 400 }}>
-              Gebruik Shift + Enter i.p.v. Enter om te verzenden
+            <Typography variant="subtitle1" sx={{fontWeight:400}}>Send message</Typography>
+            <Typography variant="body2">
+              Use Shift + Enter instead of Enter to send
             </Typography>
-            <Typography variant="subtitle2">
+            <Typography variant="body2">
               <Switch
                 checked={enterSends}
                 onChange={(_, v) => handleEnter(v)}
               />
-              {enterSends ? "Enter = Verzenden" : "Enter = Nieuwe regel"}
+              {enterSends ? "Enter = Send" : "Enter = New Row"}
             </Typography>
           </Stack>
         </Grid>

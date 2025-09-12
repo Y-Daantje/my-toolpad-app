@@ -3,8 +3,15 @@ import PersonIcon from "@mui/icons-material/Person";
 import { Outlet } from "react-router";
 import { ReactRouterAppProvider } from "@toolpad/core/react-router";
 import type { Navigation } from "@toolpad/core/AppProvider";
-import { Group, RocketLaunch, Style, WifiTethering } from "@mui/icons-material";
+import {
+  Group,
+  RocketLaunch,
+  Settings,
+  Style,
+  WifiTethering,
+} from "@mui/icons-material";
 import TuneIcon from "@mui/icons-material/Tune";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 const NAVIGATION: Navigation = [
   {
@@ -51,10 +58,22 @@ const NAVIGATION: Navigation = [
     icon: <WifiTethering />,
     pattern: "connections",
   },
+  {
+    segment: "notification",
+    title: "Notificaton",
+    icon: <NotificationsIcon />,
+    pattern: "notification",
+  },
+  {
+    segment: "SettingsALL",
+    title: "Manage",
+    icon: <Settings />,
+    pattern: "SettingsALL",
+  },
 ];
 
 const BRANDING = {
-  title: "Netflex Demo Dashboard",
+  title: "Netflex ",
 };
 
 export default function App() {

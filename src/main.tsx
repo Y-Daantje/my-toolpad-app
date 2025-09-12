@@ -10,6 +10,8 @@ import CardsPage from "./pages/cards";
 import Connections from "./pages/connections";
 import profile from "./pages/profile";
 import preferences from "./pages/preferences";
+import NotificationSettings from "./pages/notification";
+import AllSettings from "./pages/settingsALL";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,14 @@ const router = createBrowserRouter([
           {
             path: "connections",
             Component: Connections,
+          },
+          {
+            path: "notification",
+            Component: NotificationSettings,
+          },
+           {
+            path: "settingsALL",
+            Component: AllSettings,
           },
         ],
       },

@@ -240,7 +240,7 @@ export default function ProfileCardV1Sectioned({
   return (
     <Stack spacing={2}>
       {/* Header: cover + avatar + name + quick meta */}
-      <Card sx={{ overflow: "hidden", borderRadius: 3 }}>
+      <Card variant="outlined" sx={{ overflow: "hidden", border: 0 }}>
         <Box
           sx={{
             height: 180,
@@ -301,7 +301,10 @@ export default function ProfileCardV1Sectioned({
       </Card>
 
       {/* Info card */}
-      <Paper variant="outlined" sx={{ p: { xs: 2, sm: 3 }, borderRadius: 3 }}>
+      <Paper variant="outlined" sx={{ p: { xs: 2, sm: 3 }, border: 0 }}>
+        <Typography variant="h4" sx={{ fontWeight: 500 }}>
+          Contact information
+        </Typography>
         {/* ALGEMEEN — always visible */}
         <SectionTitle>Algemeen</SectionTitle>
         <Grid container spacing={2} sx={{ mt: 1 }}>
@@ -358,7 +361,7 @@ export default function ProfileCardV1Sectioned({
           mountOnEnter
         >
           {/* ZAKELIJK */}
-          
+
           <SectionTitle>Zakelijk</SectionTitle>
           <Grid container spacing={2} sx={{ mt: 1 }}>
             <Grid size={{ xs: 12, sm: 6 }}>

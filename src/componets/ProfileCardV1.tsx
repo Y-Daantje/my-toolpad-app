@@ -198,7 +198,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 export default function ProfileCardV1Sectioned({
-  coverUrl = "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1400&auto=format&fit=crop",
+  coverUrl = "https://images.unsplash.com/photo-1558551649-e44c8f992010?q=80&w=868&auto=format&fit=crop",
   profile = MOCK,
 }: {
   coverUrl?: string;

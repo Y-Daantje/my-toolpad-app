@@ -8,7 +8,6 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  FormHelperText,
   Switch,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
@@ -114,7 +113,6 @@ export default function PreferencesCard({
                 <MenuItem value="light">Licht</MenuItem>
                 <MenuItem value="dark">Donker</MenuItem>
               </Select>
-              
             </FormControl>
           </Stack>
         </Grid>
@@ -126,8 +124,11 @@ export default function PreferencesCard({
             <Typography variant="caption" sx={{ fontWeight: 400 }}>
               Gebruik Shift + Enter i.p.v. Enter om te verzenden
             </Typography>
-            <Switch checked={enterSends} onChange={(_, v) => handleEnter(v)} />
-            <Typography variant="subtitle1">
+            <Typography variant="subtitle2">
+              <Switch
+                checked={enterSends}
+                onChange={(_, v) => handleEnter(v)}
+              />
               {enterSends ? "Enter = Verzenden" : "Enter = Nieuwe regel"}
             </Typography>
           </Stack>

@@ -79,12 +79,12 @@ export default function ConnectionsPage() {
   return (
     <Stack spacing={2}>
       {/* Connected Accounts */}
-      <Card sx={{ border: 0, boxShadow: 0 }}>
+      <Card sx={{ border: 0, boxShadow: 0, pt: 1 }}>
         <CardContent>
-          <Typography variant="h4" sx={{ mb: 2 }}>
+          <Typography variant="h4" sx={{ pb: 1 }}>
             Connected accounts
           </Typography>
-
+          <Divider/>
           {/* Facebook (no subs) */}
           <Accordion disableGutters elevation={0} square defaultExpanded>
             <AccordionSummary>
@@ -121,7 +121,7 @@ export default function ConnectionsPage() {
           <Divider />
 
           {/* Microsoft (with subs) */}
-          <Accordion disableGutters elevation={0} square defaultExpanded>
+          <Accordion disableGutters elevation={0} square>
             <AccordionSummary>
               <ListItem
                 disableGutters

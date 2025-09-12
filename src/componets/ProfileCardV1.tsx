@@ -67,7 +67,7 @@ export type Profile = {
 };
 
 // demo data – wire in your real data
-const MOCK: Profile = {
+ export const MOCK: Profile = {
   DisplayName: "Yannick Daantje",
   FirstName: "Yannick",
   LastName: "Daantje",
@@ -217,7 +217,7 @@ export function FieldRow({
 }
 
 // titled divider
-function SectionTitle({ children }: { children: React.ReactNode }) {
+export function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <Stack sx={{ mt: 2 }}>
       <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 1 }}>

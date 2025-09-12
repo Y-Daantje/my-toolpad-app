@@ -53,13 +53,11 @@ export default function PreferencesCard({
       variant="outlined"
       sx={{
         p: { xs: 2, sm: 3 },
-        borderRadius: 3,
+        border: 0,
         bgcolor: "background.paper",
       }}
     >
-      <Typography variant="h4" >
-        General Preferences
-      </Typography>
+      <Typography variant="h4">General Preferences</Typography>
       <Divider sx={{ mt: 1.5, mb: 2 }} />
 
       <Grid container spacing={3}>
@@ -67,7 +65,6 @@ export default function PreferencesCard({
         <Grid size={{ xs: 12, md: 6 }}>
           <Stack spacing={0.5}>
             <FormControl
-        
               fullWidth
               sx={{
                 mt: 0.5,
@@ -80,6 +77,7 @@ export default function PreferencesCard({
               <Select
                 labelId="pref-lang-label"
                 label="Language"
+                size="small"
                 value={lang}
                 onChange={(e) => handleLang(String(e.target.value))}
               >
@@ -96,7 +94,6 @@ export default function PreferencesCard({
         <Grid size={{ xs: 12, md: 6 }}>
           <Stack spacing={0.5}>
             <FormControl
-          
               fullWidth
               sx={{
                 mt: 0.5,
@@ -104,9 +101,11 @@ export default function PreferencesCard({
               }}
             >
               <InputLabel id="pref-mode-label">Theme</InputLabel>
+
               <Select
                 labelId="pref-mode-label"
                 label="Theme"
+                size="small"
                 value={mode}
                 onChange={(e) => handleMode(String(e.target.value))}
               >
@@ -118,19 +117,26 @@ export default function PreferencesCard({
         </Grid>
 
         {/* Bericht verzenden */}
+
         <Grid size={{ xs: 12, md: 6 }}>
-          <Stack spacing={0.5}>
-            <Typography variant="subtitle1" sx={{fontWeight:400}}>Send message</Typography>
-            <Typography variant="body2">
+          <Stack spacing={0.5} sx={{ width: "100%" }}>
+            <Typography variant="subtitle1" sx={{ fontWeight: 400 }}>
+              Send message
+            </Typography>
+
+            <Typography variant="body2" sx={{ p: 0.5 }}>
               Use Shift + Enter instead of Enter to send
             </Typography>
-            <Typography variant="body2">
+
+            <Stack direction="row" alignItems="center" spacing={1}>
               <Switch
                 checked={enterSends}
                 onChange={(_, v) => handleEnter(v)}
               />
-              {enterSends ? "Enter = Send" : "Enter = New Row"}
-            </Typography>
+              <Typography variant="body2">
+                {enterSends ? "Enter = Send" : "Enter = New Row"}
+              </Typography>
+            </Stack>
           </Stack>
         </Grid>
       </Grid>

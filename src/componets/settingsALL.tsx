@@ -7,9 +7,7 @@ import ProfileDetails from "./ProfileDetails";
 import Connections from "./connections";
 import Preferences from "./preferences";
 
-import NotificationSettings, {
-  type NotificationPrefs,
-} from "./notification"; // assumes default export + named type
+import NotificationSettings, { type NotificationPrefs } from "./notification"; // assumes default export + named type
 
 import { MOCK, type Profile } from "./ProfileCardV1";
 
@@ -71,7 +69,11 @@ export default function SettingsAll() {
             <Tab value="profile" label="Profile" id="tab-profile" />
             <Tab value="connections" label="Connections" id="tab-connections" />
             <Tab value="preferences" label="Preferences" id="tab-preferences" />
-            <Tab value="notifications" label="Notifications" id="tab-notifications" />
+            <Tab
+              value="notifications"
+              label="Notifications"
+              id="tab-notifications"
+            />
           </Tabs>
         </Box>
 

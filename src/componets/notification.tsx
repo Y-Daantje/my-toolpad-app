@@ -68,8 +68,10 @@ export default function NotificationSettings({
       onChange({ ...prefs, [key]: checked });
 
   return (
-    <Paper variant="outlined" sx={{ p: { xs: 6, sm: 3 }, border:0  }}>
-      <Typography variant="h4" sx={{pb:2}}>Notifications</Typography>
+    <Paper variant="outlined" sx={{ border: 0}}>
+      <Typography variant="h4" sx={{ py: 1 }}>
+        Notifications
+      </Typography>
       <Divider />
       <Grid container spacing={2} sx={{ mt: 1 }}>
         <Grid size={{ xs: 12 }}>

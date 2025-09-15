@@ -1,6 +1,6 @@
 import * as React from "react";
 import { PageContainer } from "@toolpad/core/PageContainer";
-import CardsPages from "../componets/cardl";
+import CardsPages from "./cardl";
 
 export default function CardsPage() {
   return (

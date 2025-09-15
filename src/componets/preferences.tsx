@@ -52,15 +52,15 @@ export default function PreferencesCard({
     <Paper
       variant="outlined"
       sx={{
-        p: { xs: 2, sm: 3 },
         border: 0,
-        bgcolor: "background.paper",
       }}
     >
-      <Typography variant="h4">General Preferences</Typography>
-      <Divider sx={{ mt: 1.5, mb: 2 }} />
+      <Typography variant="h4" sx={{py:1 }}>
+        General Preferences
+      </Typography>
+      <Divider />
 
-      <Grid container spacing={3}>
+      <Grid container spacing={2} sx={{my:3}}>
         {/* Taal */}
         <Grid size={{ xs: 12, md: 6 }}>
           <Stack spacing={0.5}>

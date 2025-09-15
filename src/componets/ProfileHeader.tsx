@@ -1,5 +1,3 @@
-// components/profile/ProfileHeader.tsx
-import * as React from "react";
 import {
   Avatar,
   Box,

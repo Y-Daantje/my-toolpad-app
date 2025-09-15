@@ -67,7 +67,7 @@ export type Profile = {
 };
 
 // demo data – wire in your real data
- export const MOCK: Profile = {
+export const MOCK: Profile = {
   DisplayName: "Yannick Daantje",
   FirstName: "Yannick",
   LastName: "Daantje",
@@ -171,7 +171,7 @@ export function FieldRow({
       </Grid>
 
       {/* Value uses the remaining space */}
-      <Grid size={{ xs: 12, sm: 12, md: 10, lg: 12 }}>
+      <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12 }}>
         <Stack direction="row" alignItems="center" spacing={0.75}>
           {link && value ? (
             <Typography

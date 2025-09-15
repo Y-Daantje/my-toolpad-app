@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Crud, DataSource, DataSourceCache } from "@toolpad/core/Crud";
-import { MOCK_ACTIONS, type IAction } from "./list";
+import { MOCK_ACTIONS, type IAction } from "../data/list";
 
 // Make the row type indexable to satisfy Toolpad's DataModel constraint
 type Row = IAction & Record<PropertyKey, unknown>;

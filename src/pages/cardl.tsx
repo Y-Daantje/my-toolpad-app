@@ -1,6 +1,6 @@
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import RecipeReviewCard from "../data/RecipeReviewCards";
+import RecipeReviewCard from "../componets/RecipeReviewCards";
 import cards from "../data/cardsinfo";
 
 export default function CardsPages() {

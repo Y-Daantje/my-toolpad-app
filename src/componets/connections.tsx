@@ -16,6 +16,7 @@ import {
   Divider,
   Button,
   ListItemIcon,
+  Paper,
 } from "@mui/material";
 
 import {
@@ -77,319 +78,317 @@ export default function ConnectionsPage() {
       setMsSubs((prev) => ({ ...prev, [sid]: checked }));
 
   return (
-    <Stack spacing={2}>
+    <Stack>
       {/* Connected Accounts */}
-      <Card sx={{ border: 0, boxShadow: 0, pt: 1 }}>
-        <CardContent>
-          <Typography variant="h4" sx={{ pb: 1 }}>
-            Connected accounts
-          </Typography>
-          <Divider/>
-          {/* Facebook (no subs) */}
-          <Accordion disableGutters elevation={0} square defaultExpanded>
-            <AccordionSummary>
-              <ListItem
-                disableGutters
-                secondaryAction={
-                  <Button
-                    size="small"
-                    variant={connected.facebook ? "outlined" : "contained"}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      togglePlatform("facebook")();
-                    }}
-                    onFocus={(e) => e.stopPropagation()}
-                    onKeyDown={(e) => e.stopPropagation()}
-                  >
-                    {connected.facebook ? "Loskoppelen" : "Verbinden"}
-                  </Button>
-                }
-                sx={{ pr: 7 }}
-              >
-                <ListItemAvatar>
-                  <Avatar sx={{ bgcolor: "#3b5998" }}>
-                    <Facebook sx={{ color: "white" }} />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText
-                  primary="Facebook"
-                  primaryTypographyProps={{ fontWeight: 400 }}
-                />
-              </ListItem>
-            </AccordionSummary>
-          </Accordion>
-          <Divider />
-
-          {/* Microsoft (with subs) */}
-          <Accordion disableGutters elevation={0} square>
-            <AccordionSummary>
-              <ListItem
-                disableGutters
-                secondaryAction={
-                  <Button
-                    size="small"
-                    variant={connected.microsoft ? "outlined" : "contained"}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      togglePlatform("microsoft")();
-                    }}
-                    onFocus={(e) => e.stopPropagation()}
-                    onKeyDown={(e) => e.stopPropagation()}
-                  >
-                    {connected.microsoft ? "Loskoppelen" : "Verbinden"}
-                  </Button>
-                }
-                sx={{ pr: 7 }}
-              >
-                <ListItemAvatar>
-                  <Avatar
-                    sx={{
-                      background:
-                        "linear-gradient(90deg, #004fe1, #08a1f7, #03c1f4, #09e0fe)", // your blue gradient
-                    }}
-                  >
-                    <Microsoft />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText
-                  primary="Microsoft"
-                  primaryTypographyProps={{ fontWeight: 400 }}
-                />
-              </ListItem>
-            </AccordionSummary>
-
-            <AccordionDetails>
-              <List dense disablePadding>
-                <ListItem
-                  disableGutters
-                  secondaryAction={
-                    <Switch
-                      edge="end"
-                      checked={msSubs.outlook}
-                      onChange={toggleMsSub("outlook")}
-                      disabled={!connected.microsoft}
-                    />
-                  }
-                  sx={{ pr: 6 }}
+      <Paper sx={{ border: 0, boxShadow: 0, pt:1,}}>
+        <Typography variant="h4" sx={{ pb: 1}}>
+          Connected accounts
+        </Typography>
+        <Divider />
+        {/* Facebook (no subs) */}
+        <Accordion disableGutters elevation={0} square defaultExpanded>
+          <AccordionSummary>
+            <ListItem
+              disableGutters
+              secondaryAction={
+                <Button
+                  size="small"
+                  variant={connected.facebook ? "outlined" : "contained"}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    togglePlatform("facebook")();
+                  }}
+                  onFocus={(e) => e.stopPropagation()}
+                  onKeyDown={(e) => e.stopPropagation()}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 32,
-                      color: connected.microsoft
-                        ? "text.primary"
-                        : "text.disabled",
-                    }}
-                  >
-                    <Mail />
-                  </ListItemIcon>
-                  <ListItemText primary="Outlook" />
-                </ListItem>
+                  {connected.facebook ? "Loskoppelen" : "Verbinden"}
+                </Button>
+              }
+              sx={{ pr: 7 }}
+            >
+              <ListItemAvatar>
+                <Avatar sx={{ bgcolor: "#3b5998" }}>
+                  <Facebook sx={{ color: "white" }} />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary="Facebook"
+                primaryTypographyProps={{ fontWeight: 400 }}
+              />
+            </ListItem>
+          </AccordionSummary>
+        </Accordion>
+        <Divider />
 
-                <ListItem
-                  disableGutters
-                  secondaryAction={
-                    <Switch
-                      edge="end"
-                      checked={msSubs.onedrive}
-                      onChange={toggleMsSub("onedrive")}
-                      disabled={!connected.microsoft}
-                    />
-                  }
-                  sx={{ pr: 6 }}
+        {/* Microsoft (with subs) */}
+        <Accordion disableGutters elevation={0} square>
+          <AccordionSummary>
+            <ListItem
+              disableGutters
+              secondaryAction={
+                <Button
+                  size="small"
+                  variant={connected.microsoft ? "outlined" : "contained"}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    togglePlatform("microsoft")();
+                  }}
+                  onFocus={(e) => e.stopPropagation()}
+                  onKeyDown={(e) => e.stopPropagation()}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 32,
-                      color: connected.microsoft
-                        ? "text.primary"
-                        : "text.disabled",
-                    }}
-                  >
-                    <CloudOutlined />
-                  </ListItemIcon>
-                  <ListItemText primary="OneDrive" />
-                </ListItem>
-
-                <ListItem
-                  disableGutters
-                  secondaryAction={
-                    <Switch
-                      edge="end"
-                      checked={msSubs.teams}
-                      onChange={toggleMsSub("teams")}
-                      disabled={!connected.microsoft}
-                    />
-                  }
-                  sx={{ pr: 6 }}
+                  {connected.microsoft ? "Loskoppelen" : "Verbinden"}
+                </Button>
+              }
+              sx={{ pr: 7 }}
+            >
+              <ListItemAvatar>
+                <Avatar
+                  sx={{
+                    background:
+                      "linear-gradient(90deg, #004fe1, #08a1f7, #03c1f4, #09e0fe)", // your blue gradient
+                  }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 32,
-                      color: connected.microsoft
-                        ? "text.primary"
-                        : "text.disabled",
-                    }}
-                  >
-                    <GroupsOutlined />
-                  </ListItemIcon>
-                  <ListItemText primary="Teams" />
-                </ListItem>
-              </List>
-            </AccordionDetails>
-          </Accordion>
-          <Divider />
+                  <Microsoft />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary="Microsoft"
+                primaryTypographyProps={{ fontWeight: 400 }}
+              />
+            </ListItem>
+          </AccordionSummary>
 
-          {/* Twitter  */}
-          <Accordion disableGutters elevation={0} square defaultExpanded>
-            <AccordionSummary>
+          <AccordionDetails>
+            <List dense disablePadding>
               <ListItem
                 disableGutters
                 secondaryAction={
-                  <Button
-                    size="small"
-                    variant={connected.twitter ? "outlined" : "contained"}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      togglePlatform("twitter")();
-                    }}
-                    onFocus={(e) => e.stopPropagation()}
-                    onKeyDown={(e) => e.stopPropagation()}
-                  >
-                    {connected.twitter ? "Loskoppelen" : "Verbinden"}
-                  </Button>
+                  <Switch
+                    edge="end"
+                    checked={msSubs.outlook}
+                    onChange={toggleMsSub("outlook")}
+                    disabled={!connected.microsoft}
+                  />
                 }
-                sx={{ pr: 7 }}
+                sx={{ pr: 6 }}
               >
-                <ListItemAvatar>
-                  <Avatar sx={{ bgcolor: "black" }}>
-                    <X sx={{ color: "white" }} />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText
-                  primary="X"
-                  primaryTypographyProps={{ fontWeight: 400 }}
-                />
+                <ListItemIcon
+                  sx={{
+                    minWidth: 32,
+                    color: connected.microsoft
+                      ? "text.primary"
+                      : "text.disabled",
+                  }}
+                >
+                  <Mail />
+                </ListItemIcon>
+                <ListItemText primary="Outlook" />
               </ListItem>
-            </AccordionSummary>
-          </Accordion>
-          <Divider />
 
-          {/* Instagram */}
-          <Accordion disableGutters elevation={0} square defaultExpanded>
-            <AccordionSummary>
               <ListItem
                 disableGutters
                 secondaryAction={
-                  <Button
-                    size="small"
-                    variant={connected.instagram ? "outlined" : "contained"}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      togglePlatform("instagram")();
-                    }}
-                    onFocus={(e) => e.stopPropagation()}
-                    onKeyDown={(e) => e.stopPropagation()}
-                  >
-                    {connected.instagram ? "Loskoppelen" : "Verbinden"}
-                  </Button>
+                  <Switch
+                    edge="end"
+                    checked={msSubs.onedrive}
+                    onChange={toggleMsSub("onedrive")}
+                    disabled={!connected.microsoft}
+                  />
                 }
-                sx={{ pr: 7 }}
+                sx={{ pr: 6 }}
               >
-                <ListItemAvatar>
-                  <Avatar
-                    sx={{
-                      backgroundImage: IG_GRADIENT, // <- your full IG gradient
-                    }}
-                  >
-                    <Instagram />
-                  </Avatar>
-                </ListItemAvatar>
-
-                <ListItemText
-                  primary="Instagram"
-                  primaryTypographyProps={{ fontWeight: 400 }}
-                />
+                <ListItemIcon
+                  sx={{
+                    minWidth: 32,
+                    color: connected.microsoft
+                      ? "text.primary"
+                      : "text.disabled",
+                  }}
+                >
+                  <CloudOutlined />
+                </ListItemIcon>
+                <ListItemText primary="OneDrive" />
               </ListItem>
-            </AccordionSummary>
-          </Accordion>
-          <Divider />
-          <Accordion disableGutters elevation={0} square defaultExpanded>
-            <AccordionSummary>
+
               <ListItem
                 disableGutters
                 secondaryAction={
-                  <Button
-                    size="small"
-                    variant={connected.Linkedin ? "outlined" : "contained"}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      togglePlatform("Linkedin")();
-                    }}
-                    onFocus={(e) => e.stopPropagation()}
-                    onKeyDown={(e) => e.stopPropagation()}
-                  >
-                    {connected.Linkedin ? "Loskoppelen" : "Verbinden"}
-                  </Button>
+                  <Switch
+                    edge="end"
+                    checked={msSubs.teams}
+                    onChange={toggleMsSub("teams")}
+                    disabled={!connected.microsoft}
+                  />
                 }
-                sx={{ pr: 7 }}
+                sx={{ pr: 6 }}
               >
-                <ListItemAvatar>
-                  <Avatar
-                    sx={{
-                      bgcolor: "#0A66C2", // LinkedIn blue
-                    }}
-                  >
-                    <LinkedIn sx={{ color: "white" }} />
-                  </Avatar>
-                </ListItemAvatar>
-
-                <ListItemText
-                  primary="Linkedin"
-                  primaryTypographyProps={{ fontWeight: 400 }}
-                />
+                <ListItemIcon
+                  sx={{
+                    minWidth: 32,
+                    color: connected.microsoft
+                      ? "text.primary"
+                      : "text.disabled",
+                  }}
+                >
+                  <GroupsOutlined />
+                </ListItemIcon>
+                <ListItemText primary="Teams" />
               </ListItem>
-            </AccordionSummary>
-          </Accordion>
-          <Divider />
-          <Accordion disableGutters elevation={0} square defaultExpanded>
-            <AccordionSummary>
-              <ListItem
-                disableGutters
-                secondaryAction={
-                  <Button
-                    size="small"
-                    variant={connected.github ? "outlined" : "contained"}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      togglePlatform("github")();
-                    }}
-                    onFocus={(e) => e.stopPropagation()}
-                    onKeyDown={(e) => e.stopPropagation()}
-                  >
-                    {connected.github ? "Loskoppelen" : "Verbinden"}
-                  </Button>
-                }
-                sx={{ pr: 7 }}
-              >
-                <ListItemAvatar>
-                  <Avatar
-                    sx={{
-                      bgcolor: "black",
-                    }}
-                  >
-                    <GitHub sx={{ color: "white" }} />
-                  </Avatar>
-                </ListItemAvatar>
+            </List>
+          </AccordionDetails>
+        </Accordion>
+        <Divider />
 
-                <ListItemText
-                  primary="GitHub"
-                  primaryTypographyProps={{ fontWeight: 400 }}
-                />
-              </ListItem>
-            </AccordionSummary>
-          </Accordion>
-        </CardContent>
-      </Card>
+        {/* Twitter  */}
+        <Accordion disableGutters elevation={0} square defaultExpanded>
+          <AccordionSummary>
+            <ListItem
+              disableGutters
+              secondaryAction={
+                <Button
+                  size="small"
+                  variant={connected.twitter ? "outlined" : "contained"}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    togglePlatform("twitter")();
+                  }}
+                  onFocus={(e) => e.stopPropagation()}
+                  onKeyDown={(e) => e.stopPropagation()}
+                >
+                  {connected.twitter ? "Loskoppelen" : "Verbinden"}
+                </Button>
+              }
+              sx={{ pr: 7 }}
+            >
+              <ListItemAvatar>
+                <Avatar sx={{ bgcolor: "black" }}>
+                  <X sx={{ color: "white" }} />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary="X"
+                primaryTypographyProps={{ fontWeight: 400 }}
+              />
+            </ListItem>
+          </AccordionSummary>
+        </Accordion>
+        <Divider />
+
+        {/* Instagram */}
+        <Accordion disableGutters elevation={0} square defaultExpanded>
+          <AccordionSummary>
+            <ListItem
+              disableGutters
+              secondaryAction={
+                <Button
+                  size="small"
+                  variant={connected.instagram ? "outlined" : "contained"}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    togglePlatform("instagram")();
+                  }}
+                  onFocus={(e) => e.stopPropagation()}
+                  onKeyDown={(e) => e.stopPropagation()}
+                >
+                  {connected.instagram ? "Loskoppelen" : "Verbinden"}
+                </Button>
+              }
+              sx={{ pr: 7 }}
+            >
+              <ListItemAvatar>
+                <Avatar
+                  sx={{
+                    backgroundImage: IG_GRADIENT, // <- your full IG gradient
+                  }}
+                >
+                  <Instagram />
+                </Avatar>
+              </ListItemAvatar>
+
+              <ListItemText
+                primary="Instagram"
+                primaryTypographyProps={{ fontWeight: 400 }}
+              />
+            </ListItem>
+          </AccordionSummary>
+        </Accordion>
+        <Divider />
+        <Accordion disableGutters elevation={0} square defaultExpanded>
+          <AccordionSummary>
+            <ListItem
+              disableGutters
+              secondaryAction={
+                <Button
+                  size="small"
+                  variant={connected.Linkedin ? "outlined" : "contained"}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    togglePlatform("Linkedin")();
+                  }}
+                  onFocus={(e) => e.stopPropagation()}
+                  onKeyDown={(e) => e.stopPropagation()}
+                >
+                  {connected.Linkedin ? "Loskoppelen" : "Verbinden"}
+                </Button>
+              }
+              sx={{ pr: 7 }}
+            >
+              <ListItemAvatar>
+                <Avatar
+                  sx={{
+                    bgcolor: "#0A66C2", // LinkedIn blue
+                  }}
+                >
+                  <LinkedIn sx={{ color: "white" }} />
+                </Avatar>
+              </ListItemAvatar>
+
+              <ListItemText
+                primary="Linkedin"
+                primaryTypographyProps={{ fontWeight: 400 }}
+              />
+            </ListItem>
+          </AccordionSummary>
+        </Accordion>
+        <Divider />
+        <Accordion disableGutters elevation={0} square defaultExpanded>
+          <AccordionSummary>
+            <ListItem
+              disableGutters
+              secondaryAction={
+                <Button
+                  size="small"
+                  variant={connected.github ? "outlined" : "contained"}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    togglePlatform("github")();
+                  }}
+                  onFocus={(e) => e.stopPropagation()}
+                  onKeyDown={(e) => e.stopPropagation()}
+                >
+                  {connected.github ? "Loskoppelen" : "Verbinden"}
+                </Button>
+              }
+              sx={{ pr: 7 }}
+            >
+              <ListItemAvatar>
+                <Avatar
+                  sx={{
+                    bgcolor: "black",
+                  }}
+                >
+                  <GitHub sx={{ color: "white" }} />
+                </Avatar>
+              </ListItemAvatar>
+
+              <ListItemText
+                primary="GitHub"
+                primaryTypographyProps={{ fontWeight: 400 }}
+              />
+            </ListItem>
+          </AccordionSummary>
+        </Accordion>
+      </Paper>
     </Stack>
   );
 }

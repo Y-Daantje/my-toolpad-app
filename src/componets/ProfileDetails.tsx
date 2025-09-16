@@ -33,8 +33,8 @@ export default function ProfileDetails({ profile }: { profile: Profile }) {
   const [expanded, setExpanded] = React.useState(false);
 
   return (
-    <Paper variant="outlined" sx={{ border: 0, pt:1 }}>
-      <Typography variant="h4" sx={{pb:1}}>
+    <Paper variant="outlined" sx={{ border: 0, pt: 1 }}>
+      <Typography variant="h4" sx={{ pb: 1 }}>
         Contact information
       </Typography>
       <Divider />
@@ -49,8 +49,12 @@ export default function ProfileDetails({ profile }: { profile: Profile }) {
           <FieldRow
             label="E-mail"
             value={
-              <Stack direction="row" sx={{ gap: 0.5 }}>
-                <EmailIcon fontSize="medium" sx={{ pr: 0.5 }} />
+              <Stack
+                direction="row"
+                alignItems="center" // ← align vertically
+                sx={{ gap: 0.5, fontSize: 20, lineHeight: 1 }}
+              >
+                <EmailIcon fontSize="inherit" /> {/* ← match text size */}
                 {profile.PrimaryEmail}
               </Stack>
             }
@@ -62,11 +66,12 @@ export default function ProfileDetails({ profile }: { profile: Profile }) {
             value={
               <Stack
                 direction="row"
+                fontSize={20}
                 sx={{ gap: 0.5 }}
                 spacing={1}
                 alignItems="center"
               >
-                <WorkOutlineIcon fontSize="medium" />
+                <WorkOutlineIcon fontSize="small" />
                 {profile.JobTitle}
               </Stack>
             }
@@ -78,11 +83,12 @@ export default function ProfileDetails({ profile }: { profile: Profile }) {
             value={
               <Stack
                 direction="row"
+                 fontSize={19}
                 sx={{ gap: 0.5 }}
                 spacing={1}
                 alignItems="center"
               >
-                <CorporateFareIcon fontSize="medium" />
+                <CorporateFareIcon fontSize="small" />
                 {profile.Department}
               </Stack>
             }
